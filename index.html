@@ -1,599 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Green Earth - Plant a Tree</title>
-  <style>
-    body { font-family: Inter; line-height: 1.6;background-color: rgba(240,253,244,1);}
-    header { background:rgba(240,253,244,1); text-align: center; padding: 15px; font-size: 22px; font-weight: bold; } 
-    main { display: flex; flex: 1;}
-/* Navbar */
-    nav {
-      background:#1b7b3f;
-      padding: 15px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      color: #fff;
-    }
-    nav .logo { font-size: 22px; font-weight: bold; }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: #fff;
-      font-weight: 500;
-    }
-    .plant-btn {
-    background-color: rgba(250, 204, 21, 1);
-
-font-family: Inter;
-font-size: 16px;
-font-weight: 500;
-line-height: 100%;
-letter-spacing: 0%;
-text-align: left;;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 999px;
-      cursor: pointer;
-      color: #1b7b3f;
-    }
-
-    /* Banner */
-    .hero {
-    
-      height: 382px;              
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 72px 16px;            
-      background-color:rgba(207,240,220,1);
-      /* LEFT leaf, RIGHT leaf */
-      background-image: url("./assets/hero-leaf1.png"), 
-      url("./assets/hero-leaf2.png");
-
-      background-repeat: no-repeat, no-repeat;
-      background-position: left center, right center;   
-      /* responsive leaf size */
-      background-size: clamp(120px, 26vw, 420px) auto, clamp(120px, 26vw, 420px) auto;
-    }
-
-    .hero-inner {
-      max-width: 780px;
-      text-align: center;
-      
-      padding: 100px 20px;
-      color: black;
-      align-items: center;
-      flex-direction: row;
-    }
-
-    h1 {
-        width: 627px;
-        height: 60px;
-        text-align: center;
-        line-height: 60px;
-        letter-spacing: 0%;
-      margin: 0 0 12px;
-      font-size: 48px;
-      font-weight: 700;
-      line-height: 1.2;
-    }
-
-    p {
-      margin: 0 auto 20px;
-      width: 583px;
-      height: 48px;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 24px;
-      color: rgba(31,41,55,1);
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 20px 12px 20px;
-      border: none;
-      border-radius: 999px;
-      background: #f4b400;
-      color: #1b7b3f;
-      font-weight: 700;
-      font-size: 16px;
-      align-items: center;
-      flex-direction: row;
-      cursor: pointer;
-      transition: transform .12s ease, filter .2s ease;
-    }
-    .btn:hover { transform: translateY(-1px); filter: brightness(0.95); }
-    /* Section Header */
-    .header { text-align: center; font-size: 32px; font-weight: 600; margin: 40px 0; }
-    
-    /*About*/
-    .about{
-      display: flex;
-      justify-content: flex-start;
-      flex-wrap: wrap;
-      padding: 50px 20px;
-      align-items: center;
-    }
-    .about img { width: 530px; height: 530px; border-radius: 10px; max-width: 100%; }
-    .about .text1 {
-        color: var(--Neutral/Dark, rgba(31, 41, 55, 1));
-
-font-family: Inter;
-font-size: 32px;
-font-weight: 600;
-line-height: 40px;
-letter-spacing: 0%;
-text-align: center;
-    }
-    .about .text2 { flex: 1; }
-
-    /* Impact */
-    .impact-section {display:grid;
-        width: 100%;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-      padding: 50px 20px;
-      background: rgba(207,240,220,1);
-      flex-wrap: wrap;
-      justify-content: center;
-      text-align: center;
-    }
-    .impact-section h2 {
-      background: white;
-      color: rgba(21,128,61,1);
-      border-radius: 10px;
-      text-align: center;
-      font-size: 24px;
-      margin-bottom: 40px;
-    }
-    .impact-cards{
-      background: white;
-      color: rgba(31,41,55,1);
-      text-align: center;
-      font-size: 16px;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 30px;
-    }
-    .card{
-        background: #fff;
-        border-radius: 10px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        width: 250px;
-        padding: 30px 50px;
-    }
-    .card h3 {
-      color: #228B22; /* green */
-      font-size: 24px;
-      margin: 0;
-    }
-        .card p {
-      margin: 10px 0 0;
-      font-size: 14px;
-      color: #444;
-    }
-    /* Tree Section */
-        .container {
-      display: flex;
-      width: 1200px;
-    }
-    /* Categories */
-    .categories {
-      width: 200px;
-      margin-right: 20px;
-    }
-    .categories button {
-      display: block;
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 5px;
-      border: none;
-      background-color: white;
-      cursor: pointer;
-      text-align: left;
-      border-radius: 5px;
-    }
-    .categories button.active {
-      background-color: #2e7d32;
-      color: white;
-    }
-    /* Products */
-    .products {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      flex: 2;
-    }
-    .card {
-      background-color: white;
-      border-radius: 10px;
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .card img {
-      width: 100%;
-      height: 150px;
-      background-color: #ddd;
-      border-radius: 10px;
-      margin-bottom: 10px;
-    }
-    .card h3 {
-      margin: 5px 0;
-    }
-    .card p {
-      font-size: 14px;
-      color: #555;
-      margin: 5px 0;
-    }
-    .card span {
-      background-color: #2e7d32;
-      color: white;
-      padding: 2px 5px;
-      border-radius: 5px;
-      font-size: 12px;
-    }
-    .price {
-      margin-top: 5px;
-      font-weight: bold;
-    }
-    .card button {
-      margin-top: 10px;
-      padding: 8px;
-      border: none;
-      background-color: #2e7d32;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    /* Cart */
-    .cart {
-      width: 250px;
-      margin-left: 20px;
-      background-color: white;
-      border-radius: 10px;
-      padding: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .cart h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-    }
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-      font-size: 14px;
-    }
-    .cart-item button {
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: #999;
-      font-size: 16px;
-    }
-    .total {
-      margin-top: 10px;
-      font-weight: bold;
-    }
-  
-   
-    
-    
-
-    /* Modal */
-    .modal {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
-      display: none;
-      justify-content: center;
-      align-items: center;
-    }
-    .modal-content {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 500px;
-      text-align: center;
-    }
-    .modal-content img { width: 100%; border-radius: 10px; }
-    .close-btn { cursor: pointer; color: red; font-size: 18px; float: right; }
-
-    /* Spinner */
-    .spinner {
-      border: 5px solid #f3f3f3;
-      border-top: 5px solid #2a9d8f;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      animation: spin 1s linear infinite;
-      margin: 50px auto;
-    }
-    @keyframes spin { 100% { transform: rotate(360deg); } }
-    /* Donation Form */
-    .donation-form {
-      font-size: 24px;
-      padding: 40px 20px;
-      text-align: center;
-      color: white;
-      justify-content: center;
-      box-shadow: 0px 4px 22px 0px rgba(0, 0, 0, 0.06);
-      background: rgba(21, 128, 61, 1);
-    }
-    .donation-form input, .donation-form button {
-      margin: 10px;
-      padding: 10px;
-      border-radius: 6px;
-      border: none;
-      width: 450px;
-      align-items: center;
-    }
-    .donation-form button {
-      background: rgba(250, 204, 21, 1);
-      border-radius: 999px;
-      padding: 12px 20px 12px 20px;
-      font-weight: 600;
-      font-size: 16px;
-      align-items: center;
-      cursor: pointer;
-      color: rgba(21,128,61,1);
-      line-height: 100%;
-    }
-    footer {
-    
-        text-align: center;
-      background-color: rgba(20,83,45,1);
-      color: rgba(255,255,255,1);
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 24px;
-      padding: 15px;
-    }
-/* Responsive */
-    @media(max-width:768px){
-      .tree-section { flex-direction: column;}
-      .cart {order: -1;}
-  </style>
-  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+
+<body class="bg-green-50">
 
   <!-- Navbar -->
-  <nav>
-    <div class="logo">🌱 Green Earth</div>
-    <ul>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Campaign</a></li>
-      <li><a href="#">Impact</a></li>
+  <nav class="bg-green-800 text-white px-10 py-4 flex justify-between items-center flex-wrap">
+    <div class="text-xl font-bold">🌱 Green Earth</div>
+    <ul class="flex gap-6">
+      <li><a href="#" class="hover:text-yellow-400 font-medium">About</a></li>
+      <li><a href="#" class="hover:text-yellow-400 font-medium">Campaign</a></li>
+      <li><a href="#" class="hover:text-yellow-400 font-medium">Impact</a></li>
     </ul>
-    <button class="plant-btn">Plant a Tree</button>
+    <button
+      class="bg-yellow-400 text-green-800 px-4 py-2 rounded-full font-medium text-sm hover:bg-yellow-300 transition">
+      Plant a Tree
+    </button>
   </nav>
 
-  <!-- Banner -->
-  <section class="hero">
-        <div class="hero-inner">
-    <h1>Plant a Tree, Grow a Future</h1>
-    <p>Join our mission to plant 1 million trees and make the Earth greener for future
-    <br> generations.</p>
-    <button class="btn">Get Involved</button>
+  <!-- Hero Banner -->
+  <section
+    class=" flex items-center justify-center py-12 bg-[#cff0dc] bg-no-repeat bg-[url('/assets/hero-leaf1.png'),url('/assets/hero-leaf2.png')] bg-[position:left_center,right_center] bg-[length:clamp(120px,28vw,420px)_auto,clamp(120px,28vw,420px)_auto]">
+    <div class="max-w-3xl text-center px-4">
+      <h1 class="text-5xl font-bold leading-tight mb-4">Plant a Tree, Grow a Future</h1>
+      <p class="text-gray-800 text-base leading-6 max-w-xl mx-auto mb-6">
+        Join our mission to plant 1 million trees and make the Earth greener for future generations.
+      </p>
+      <button
+        class="inline-block px-6 py-3 rounded-full bg-yellow-500 text-green-800 font-medium text-sm hover:brightness-95 hover:-translate-y-0.5 transition">
+        Get Involved
+      </button>
     </div>
   </section>
-  <!-- Choose Trees -->
-    <div class="container">
-    <!-- Categories -->
-    <div class="categories" id="categories"></div>
 
-    <!-- Products -->
-    <div class="products" id="products"></div>
-
-    <!-- Cart -->
-    <div class="cart">
-      <h3>Your Cart</h3>
-      <div id="cart-items"></div>
-      <div class="total">Total: ৳<span id="total">0</span></div>
-    </div>
-  </div>
-</section>
-  <--About -->
-  <section class="about">
-    <header class="text1 header">About the Campaign</header>
-    <div class="flex-1"> <img src="./assets/about.png" alt="Tree">
-    </div>
-    <div class="flex-1">
-    
-        
-    <div class="text2">
+  <!-- Middle part -->
+  <div class="flex justify-center p-6">
+    <div class="flex w-[1200px] gap-5">
       
-      <p>Green Earth is a global tree plantation initiative dedicated to fighting climate change. Since our start, we’ve planted over 500,000 trees worldwide. By joining our campaign, you help restore forests, create habitats for wildlife, and combat global warming.</p>
-    </div>
-    </div>
-  </section>
 
-  <!-- Impact -->
-  <section class="impact-section">
-    <header class="header text-[rgba(31,41,55,1)]">Our Impact</header>
-    <div class="impact-cards">
-      <div class="card"><h3>500K+</h3><p>Trees Planted</p></div>
-      <div class="card"><h3>120+</h3><p>Communities Involved</p> </div>
-     <div class="card"><h3>30+</h3><p>Countries Reached</p></div>
-    </div>
-  </section>
+      <!-- Categories -->
+      <div id="categories" class="w-52 space-y-2"></div>
 
-</body>
+      <!-- Products -->
+      <div id="products" class="grid grid-cols-3 gap-5 flex-1"></div>
+     
+      <!-- Cart -->
+      <div class="w-64 bg-white rounded-xl p-4 shadow-md">
+        <h3 class="text-lg font-bold mb-3">Your Cart</h3>
+        <div id="cart-items" class="space-y-2"></div>
+        <div class="mt-3 font-bold">Total: ৳<span id="total">0</span></div>
+      </div>
 
-
-  <!-- Tree Section -->
-    <div class="categories" id="categories"></div>
-    <div class="trees" id="treeList"></div>
-    <div class="cart">
-      <h3>Your Cart</h3>
-      <ul id="cartList"></ul>
-      <p>Total: $<span id="total">0</span></p>
-    </div>
-  </section>
-<section class="tree-section" id="treeList">
-     <!-- Example Card --> <div class="card"> 
-        <div class="tree-card"></div> <h3>Mango Tree</h3> <p>A fast-growing tropical tree that produces juicy mangoes.</p> <span class="tag">Fruit Tree</span> <div class="price">৳500</div> <button onclick="addToCart('Mango Tree', 500)">Add to Cart</button> </div> <div class="card"> <h3>Guava Tree</h3> <p>Delicious tropical guavas full of vitamin C.</p> <span class="tag">Fruit Tree</span> <div class="price">৳500</div> <button onclick="addToCart('Guava Tree', 500)">Add to Cart</button> </div> <div class="card"> <h3>Jackfruit Tree</h3> <p>The national fruit of Bangladesh, big and sweet.</p> <span class="tag">Fruit Tree</span> <div class="price">৳600</div> <button onclick="addToCart('Jackfruit Tree', 600)">Add to Cart</button> </div> </section> 
-        <!-- Cart --> 
-        <aside class="cart"> 
-            <h3>Your Cart</h3> 
-            <div id="cart-items"></div> 
-            <div class="cart-total">Total: ৳<span id="total">0</span></div>
-             </aside> 
-             </main> 
-  <!-- Modal -->
-  <div class="modal" id="treeModal">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeModal()">❌</span>
-      <h2 id="modalTitle"></h2>
-      <img id="modalImg" src="" alt="">
-      <p id="modalDesc"></p>
-      <p><b>Category:</b> <span id="modalCat"></span></p>
-      <p><b>Price:</b> $<span id="modalPrice"></span></p>
     </div>
   </div>
+  <!--About-->
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <!-- Header -->
+    <h2 class="text-center text-3xl font-bold mb-12 text-[rgba(31,41,55,1)]">
+      About the Campaign
+    </h2>
+
+    <!-- Content -->
+    <div class="flex flex-col md:flex-row items-center gap-10">
+      <!-- Left Image -->
+      <div class="flex-1 flex justify-center">
+        <img src="/assets/about.png" 
+             alt="Plant" 
+             class="rounded-lg shadow-md w-full max-w-sm md:max-w-md object-contain">
+      </div>
+
+      <!-- Right Text -->
+      <div class="flex-1">
+        <p class="text-[rgba(31,41,55,1)] mb-4 leading-relaxed text-lg">
+          Green Earth is a global tree plantation initiative dedicated to fighting climate change. 
+          Since our start, we planted over 500,000 trees worldwide. By joining our campaign, 
+          you help restore forests, create habitats for wildlife, and combat global warming.
+        </p>
+        <ul class="list-disc pl-5 space-y-2 text-[rgba(31,41,55,1)] text-lg">
+          <li>Restoration of natural habitats</li>
+          <li>Improvement of air quality</li>
+          <li>Support for local communities</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+    <!-- Impact Section -->
+      <section class="bg-green-100 py-12">
+    <div class="container mx-auto text-center">
+      <h2 class="text-2xl font-bold mb-8">Our Impact</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-2xl font-bold text-green-600">500K+</h3>
+          <p class="mt-2 text-gray-600">Trees Planted</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-2xl font-bold text-green-600">120+</h3>
+          <p class="mt-2 text-gray-600">Communities Involved</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-2xl font-bold text-green-600">30+</h3>
+          <p class="mt-2 text-gray-600">Countries Reached</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Donation Form -->
-  <section class="donation-form">
-    <h2>Plant a Tree Today</h2>
-    <input type="text" placeholder="Your Name"><br>
-    <input type="email" placeholder="Your Email"><br>
-    <input type="number" placeholder="Number of Trees"><br>
-    <button>Donate Now</button>
+  <section class="bg-[rgba(22,101,52,1)] text-white py-12">
+    <div class="container mx-auto text-center bg-green-800">
+      <h2 class="text-2xl font-bold mb-6">Plant a Tree Today</h2>
+      <form id="donate-form" class="max-w-lg mx-auto space-y-4">
+        <input type="text" placeholder="Your Name" class="w-full p-3 rounded-lg text-gray-900" required>
+        <input type="email" placeholder="Your Email" class="w-full p-3 rounded-lg text-gray-900" required>
+        <input type="number" placeholder="Number of Trees" class="w-full p-3 rounded-lg text-gray-900" required>
+        <button
+          class="w-full bg-yellow-400 text-green-900 px-6 py-3 rounded-3xl font-semibold hover:bg-yellow-500">Donate
+          Now</button>
+      </form>
+    </div>
   </section>
 
   <!-- Footer -->
-  <footer>
-    © 2025 Green Earth. All Rights Reserved.
+  <footer class="bg-green-950 text-white text-center py-4">
+    <p>&copy; 2025 Green Earth. All Rights Reserved.</p>
   </footer>
 
-<script>
   <script>
     const categoriesData = [
-      "All Trees","Fruit Trees","Flowering Trees","Shade Trees","Medicinal Trees",
-      "Timber Trees","Evergreen Trees","Ornamental Plants","Bamboo","Climbers","Aquatic Plants"
-    ];
-    const productsData = [
-      {"id": 1,"image": "https://i.ibb.co.com/cSQdg7tf/mango-min.jpg","name": "Mango Tree","description": "A fast-growing tropical tree that produces delicious, juicy mangoes during summer. Its dense green canopy offers shade, while its sweet fruits are rich in vitamins and minerals.","category": "Fruit Tree","price": 500 },
-     {
-      "id": 2,
-      "image": "https://i.ibb.co.com/WNbbx3rn/guava-min.jpg",
-      "name": "Guava Tree",
-      "description": "A hardy fruit tree that grows in various climates, yielding guavas packed with Vitamin C. Its low maintenance nature makes it a favorite for home gardens.",
-      "category": "Fruit Tree",
-      "price": 350
-    },
-    {
-      "id": 3,
-      "image": "https://i.ibb.co.com/xt98PwZq/jackfruit-min.jpg",
-      "name": "Jackfruit Tree",
-      "description": "A large tropical tree that bears the world’s biggest fruit, the jackfruit. Its sweet and aromatic flesh is both nutritious and filling, and the tree itself provides generous shade.",
-      "category": "Fruit Tree",
-      "price": 800
-    },
-    {
-      "id": 4,
-      "image": "https://i.ibb.co.com/1YzsVWjm/Gulmohar-min.jpg",
-      "name": "Gulmohar",
-      "description": "Known as the ‘Flame of the Forest’, this tree bursts into a vibrant display of red flowers every summer. Perfect for beautifying avenues and gardens.",
-      "category": "Flowering Tree",
-      "price": 400
-    },
-    {
-      "id": 5,
-      "image": "https://i.ibb.co.com/qY8qS7YN/champa-min.jpg",
-      "name": "Champa",
-      "description": "A fragrant flowering tree that adorns gardens with its delicate white blossoms. Widely cherished in traditional rituals and perfumery.",
-      "category": "Flowering Tree",
-      "price": 300
-    },
-    {
-      "id": 6,
-      "image": "https://i.ibb.co.com/MxPrt83c/Krishnachura-min.jpg",
-      "name": "Krishnachura",
-      "description": "A striking ornamental tree famous for its brilliant orange-red blossoms. Its wide canopy adds a festive charm to parks and roadsides.",
-      "category": "Flowering Tree",
-      "price": 450
-    },
-    {
-      "id": 7,
-      "image": "https://i.ibb.co.com/FkH6MRhR/banyan-min.jpg",
-      "name": "Banyan Tree",
-      "description": "A majestic shade tree with a vast canopy and iconic aerial roots. Revered in many cultures, it offers shelter to countless birds and animals.",
-      "category": "Shade Tree",
-      "price": 1200
-    },
-    {
-      "id": 8,
-      "image": "https://i.ibb.co.com/CKXhH7nP/neem-min.jpg",
-      "name": "Neem Tree",
-      "description": "A medicinal shade tree with powerful insect-repelling properties. Its leaves, bark, and seeds are widely used in traditional remedies.",
-      "category": "Shade Tree",
-      "price": 600
-    },
-    {
-      "id": 9,
-      "image": "https://i.ibb.co.com/svQdDjS8/rain-min.jpg",
-      "name": "Rain Tree",
-      "description": "A fast-growing tree with umbrella-like canopy and soft pink flowers. Perfect for roadside planting to provide cool shade.",
-      "category": "Shade Tree",
-      "price": 900
-    },
-    {"id": 10,"image": "https://i.ibb.co.com/50K7Cgv/amla-min.jpg","name": "Amla Tree","description": "A small to medium tree producing fruits rich in Vitamin C and antioxidants. Its fruits are used in Ayurvedic tonics for boosting immunity.","category": "Medicinal Tree","price": 550},
-    {"id": 11,"image": "https://i.ibb.co.com/MxSDCxV4/arjun-min.jpg","name": "Arjun Tree","description": "A sturdy tree with bark known for its heart-strengthening properties. Valued in herbal medicine for cardiovascular health.","category": "Medicinal Tree","price": 700},
-    {"id": 12,"image": "https://i.ibb.co.com/pB68Sz1g/bael-min.jpg","name": "Bael Tree","description": "A fruit tree whose pulp is used as a natural coolant and digestive aid. The fragrant flowers also attract bees and butterflies.","category": "Medicinal Tree","price": 500},
+      "All Trees", "Fruit Tree", "Flowering Tree", "Shade Tree", "Medicinal Tree",
+      "Timber Tree", "Evergreen Tree", "Ornamental Plant", "Bamboo", "Climber", "Aquatic Plant"
     ];
 
+    let productsData = [];
     const categoriesContainer = document.getElementById('categories');
     const productsContainer = document.getElementById('products');
     const cartItemsContainer = document.getElementById('cart-items');
     const totalEl = document.getElementById('total');
     let cart = [];
+    let activeCategory = "All Trees";
 
     // Render categories
     function renderCategories() {
-      categoriesContainer.innerHTML = '';
-      categoriesData.forEach((cat, idx) => {
-        const btn = document.createElement('button');
+      categoriesContainer.innerHTML = "";
+      
+      // Heading add
+  const heading = document.createElement("h3");
+  heading.textContent = "Categories";
+  heading.className = "text-lg font-semibold mb-2";
+  categoriesContainer.appendChild(heading);
+
+  
+      categoriesData.forEach(cat => {
+        const btn = document.createElement("button");
+        btn.className =
+          `w-full py-2 px-3 rounded-lg text-left font-medium transition ${cat === activeCategory
+            ? "bg-green-600 text-white"
+             : "bg-green-200 hover:bg-green-300"
+          }`;
         btn.textContent = cat;
-        if (idx === 0) btn.classList.add('active');
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('.categories button').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
+        btn.addEventListener("click", () => {
+          activeCategory = cat;
+          renderCategories();
           renderProducts(cat);
         });
         categoriesContainer.appendChild(btn);
       });
     }
 
+    // Fetch products
+    async function loadProducts() {
+      try {
+        const res = await fetch("https://openapi.programming-hero.com/api/plants");
+        const data = await res.json();
+        productsData = data.plants.map(p => ({
+          name: p.name,
+          desc: p.description,
+          category: p.category,
+          price: p.price,
+          image: p.image
+        }));
+
+        renderCategories();
+        renderProducts();
+      } catch (error) {
+        console.error("Error loading products:", error);
+      }
+    }
+
     // Render products
     function renderProducts(category = "All Trees") {
       productsContainer.innerHTML = '';
-      const filtered = category === "All Trees" ? productsData : productsData.filter(p => p.category === category);
+      const filtered = category === "All Trees"
+        ? productsData
+        : productsData.filter(p => p.category === category);
+
       filtered.forEach(product => {
         const card = document.createElement('div');
-        card.className = 'card';
+        card.className =
+          "bg-white rounded-xl p-4 shadow flex flex-col justify-between";
         card.innerHTML = `
-          <img alt="${product.name}">
-          <h3>${product.name}</h3>
-          <p>${product.desc}</p>
-          <span>${product.category}</span>
-          <div class="price">৳${product.price}</div>
-          <button>Add to Cart</button>
+          <div class="w-full h-36 bg-gray-200 rounded-lg mb-3 overflow-hidden flex items-center justify-center">
+            ${product.image ? `<img class="w-full h-full object-cover" src="${product.image}" alt="${product.name}">` : ""}
+          </div>
+          <h3 class="text-lg font-semibold">${product.name}</h3>
+          <p class="text-sm text-gray-600">${product.desc}</p>
+          <div class="flex justify-between items-center mt-2">
+            <span class="inline-block bg-green-200 text-black text-xs px-2 py-0.5 rounded-md">${product.category}</span>
+            <div class="font-bold">৳${product.price}</div>
+          </div>
+          <button class="mt-3 py-2 bg-green-700 text-white rounded-2xl hover:bg-green-800">Add to Cart</button>
         `;
         card.querySelector('button').addEventListener('click', () => addToCart(product));
         productsContainer.appendChild(card);
@@ -618,10 +239,14 @@ text-align: center;
       cart.forEach((item, idx) => {
         total += item.price * item.qty;
         const div = document.createElement('div');
-        div.className = 'cart-item';
+        div.className =
+          "flex justify-between items-center text-sm bg-green-100 px-2 py-1 rounded";
         div.innerHTML = `
-          ${item.name} ৳${item.price} × ${item.qty}
-          <button onclick="removeFromCart(${idx})">×</button>
+          <div>
+            <span>${item.name}</span><br>
+            <span>${item.price} × ${item.qty}</span>
+          </div>
+          <button onclick="removeFromCart(${idx})" class="text-gray-400 hover:text-red-500">×</button>
         `;
         cartItemsContainer.appendChild(div);
       });
@@ -634,11 +259,9 @@ text-align: center;
       renderCart();
     }
 
-    // Init
-    renderCategories();
-    renderProducts();
-  
-</script>
+    // Initialize
+    loadProducts();
+  </script>
 
 </body>
 </html>
